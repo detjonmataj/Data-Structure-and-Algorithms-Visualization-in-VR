@@ -28,21 +28,21 @@ public class Following : MonoBehaviour {
     {
         followArrow.gameObject.LeanDelayedCall(3f, moveArrow).setOnStart(moveArrow).setRepeat(-1);
 
-        // Follow Local Y Position of Arrow
+        // Follow Local Y Position of ArrowPrefab
         LeanTween.followDamp(dude1, followArrow, LeanProp.localY, 1.1f);
         LeanTween.followSpring(dude2, followArrow, LeanProp.localY, 1.1f);
         LeanTween.followBounceOut(dude3, followArrow, LeanProp.localY, 1.1f);
         LeanTween.followSpring(dude4, followArrow, LeanProp.localY, 1.1f, -1f, 1.5f, 0.8f);
         LeanTween.followLinear(dude5, followArrow, LeanProp.localY, 50f);
 
-        // Follow Arrow color
+        // Follow ArrowPrefab color
         LeanTween.followDamp(dude1, followArrow, LeanProp.color, 1.1f);
         LeanTween.followSpring(dude2, followArrow, LeanProp.color, 1.1f);
         LeanTween.followBounceOut(dude3, followArrow, LeanProp.color, 1.1f);
         LeanTween.followSpring(dude4, followArrow, LeanProp.color, 1.1f, -1f, 1.5f, 0.8f);
         LeanTween.followLinear(dude5, followArrow, LeanProp.color, 0.5f);
 
-        // Follow Arrow scale
+        // Follow ArrowPrefab scale
         LeanTween.followDamp(dude1, followArrow, LeanProp.scale, 1.1f);
         LeanTween.followSpring(dude2, followArrow, LeanProp.scale, 1.1f);
         LeanTween.followBounceOut(dude3, followArrow, LeanProp.scale, 1.1f);
