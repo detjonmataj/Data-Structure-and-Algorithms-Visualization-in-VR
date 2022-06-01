@@ -17,7 +17,7 @@ public class SelectionSortScript : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        initializeRandom();
+        InitializeRandom();
         StartCoroutine(selectionSortASC(objects));
     }
 
@@ -27,7 +27,7 @@ public class SelectionSortScript : MonoBehaviour
         
     }
 
-    void initializeRandom()
+    void InitializeRandom()
     {
         int length = UnityEngine.Random.Range(1, maxLength);
         // length = 10;
@@ -42,9 +42,9 @@ public class SelectionSortScript : MonoBehaviour
             // cube.transform.position = new Vector3((i * 1.75f), 0.4f, 0);
             // cube.transform.SetParent(this.transform);
             // objects[i] = cube;
-            objects[i] = GameObject.Instantiate(Cube, new Vector3((i * 1.75f), 1.0f, 0), Quaternion.identity);
+            objects[i] = GameObject.Instantiate(Cube, new Vector3((i * 1f), 1.0f, 0), Quaternion.identity);
             objects[i].transform.SetParent(this.transform);
-            objects[i].transform.localScale = new Vector3(1.5f, 1.5f, 0.001f);
+            objects[i].transform.localScale = new Vector3(0.9f, 0.9f, 0.001f);
             objects[i].GetComponentInChildren<TextMeshPro>().text = randomNumber.ToString();
             objects[i].GetComponentInChildren<TextMeshPro>().color = Color.black;
         }
