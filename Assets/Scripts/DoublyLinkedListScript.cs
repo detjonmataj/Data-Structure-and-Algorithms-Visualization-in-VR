@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SinglyLinkedListScript : MonoBehaviour
+public class DoublyLinkedListScript : MonoBehaviour
 {
 
     private readonly int maxLength = 10;
@@ -32,9 +32,9 @@ public class SinglyLinkedListScript : MonoBehaviour
     public void InitializeRandom()
     {
         int length = UnityEngine.Random.Range(1, maxLength);
-        // length = 10;
+
         nodes = new GameObject[maxLength];
-        links = new GameObject[maxLength];
+        links = new GameObject[maxLength * 2];
         int randomNumber;
 
         for (int i = 0; i < length; i++)
@@ -46,7 +46,7 @@ public class SinglyLinkedListScript : MonoBehaviour
             nodes[i].GetComponentInChildren<TextMeshPro>().text = randomNumber.ToString();
             nodes[i].GetComponentInChildren<TextMeshPro>().color = Color.black;
 
-            if(i == 0)
+            if (i == 0)
             {
                 HeadLabel = GameObject.Instantiate(Head, new Vector3((i * 1.2f), 2f, 0), Quaternion.identity);
                 HeadLabel.transform.localScale = new Vector3(1.2f, 1.2f, 0.001f);
@@ -57,7 +57,16 @@ public class SinglyLinkedListScript : MonoBehaviour
                 HeadLink.transform.SetParent(this.transform);
             }
 
-            links[i] = GameObject.Instantiate(link, new Vector3(nodes[i].transform.localPosition.x, 1.0f, 0), Quaternion.identity);
+            links[i] = GameObject.Instantiate(link, new Vector3(nodes[i].transform.localPosition.x, 1.1f, 0), Quaternion.identity);
+
+            if (i != length - 1)
+            {
+                links[i + 1] = GameObject.Instantiate(link, new Vector3(nodes[i].transform.localPosition.x, 0.9f, 0), Quaternion.identity);
+                links[i + 1].transform.Rotate(0.0f, 0.0f, 180.0f);
+                links[i + 1].transform.localScale = new Vector3(0.2f, 0.2f, 0.001f);
+                links[i + 1].transform.SetParent(this.transform);
+            }
+            
             if (i == length - 1)
             {
                 var nullText = GameObject.Instantiate(nullTxt, new Vector3(nodes[i].transform.localPosition.x + 0.8f, 0.95f, 0), Quaternion.identity);
@@ -72,17 +81,17 @@ public class SinglyLinkedListScript : MonoBehaviour
                 TailLink.transform.localScale = new Vector3(0.2f, 0.2f, 0.001f);
                 TailLink.transform.SetParent(this.transform);
             }
+
             links[i].transform.localScale = new Vector3(0.2f, 0.2f, 0.001f);
             links[i].transform.SetParent(this.transform);
         }
 
         transform.position = new Vector3(-length / 2, 5 / 2f, 0);
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
