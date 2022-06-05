@@ -21,6 +21,7 @@ public class SinglyLinkedListScript : MonoBehaviour
     public GameObject Tail;
     public GameObject CurrentText;
     public GameObject PreviousLBL;
+    public InputField UserInputField;
 
     private GameObject HeadLink;
     private GameObject TailLink;
@@ -35,7 +36,6 @@ public class SinglyLinkedListScript : MonoBehaviour
     void Start()
     {
         InitializeRandom();
-        DeleteValue();
     }
 
     public void InitializeRandom()
@@ -223,13 +223,13 @@ public class SinglyLinkedListScript : MonoBehaviour
 
     public void Append()
     {
-        int number = 0;
+        int number = int.Parse(UserInputField.text);
         StartCoroutine(AppendUtil(number));
     }
 
     public void Prepend()
     {
-        int number = 0;
+        int number = int.Parse(UserInputField.text);
         StartCoroutine(PrependUtil(number));
     }
 
@@ -439,7 +439,7 @@ public class SinglyLinkedListScript : MonoBehaviour
 
     public void Search()
     {
-        int number = 0;
+        int number = int.Parse(UserInputField.text);
         StartCoroutine(SearchUtil(number));
     }
 
@@ -501,7 +501,7 @@ public class SinglyLinkedListScript : MonoBehaviour
 
     public void DeleteValue()
     {
-        int number = 0;
+        int number = int.Parse(UserInputField.text);
         StartCoroutine(DeleteValueUtil(number));
     }
 
