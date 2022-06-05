@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -32,10 +33,7 @@ public class SinglyLinkedListScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InitializeRandom();
 
-        // DeleteFirst();
-        DeleteLast();
     }
 
     public void InitializeRandom()
@@ -46,7 +44,7 @@ public class SinglyLinkedListScript : MonoBehaviour
         }
 
         hasObject = true;
-        length = Random.Range(2, maxLength);
+        length = UnityEngine.Random.Range(2, maxLength);
         //length = 10;
         nodes = new GameObject[100];
         links = new GameObject[100];
@@ -55,7 +53,7 @@ public class SinglyLinkedListScript : MonoBehaviour
 
         for (int i = 0; i < length; i++)
         {
-            randomNumber = Random.Range(minNumber, maxNumber);
+            randomNumber = UnityEngine.Random.Range(minNumber, maxNumber);
             nodes[i] = GameObject.Instantiate(node, new Vector3((i * 1.2f)+0.6f, 1.0f, 0), Quaternion.identity);
             nodes[i].transform.SetParent(this.transform);
             nodes[i].transform.localScale = new Vector3(0.6f, 0.6f, 0.001f);
@@ -114,6 +112,8 @@ public class SinglyLinkedListScript : MonoBehaviour
     {
         LeanTween.moveLocalX(HeadLabel, nodes[1].transform.localPosition.x, 1.5f);
         LeanTween.moveLocalX(HeadLink, nodes[1].transform.localPosition.x, 1.5f);
+        yield return new WaitForSeconds(1f);
+        LeanTween.color(nodes[0], Color.red, 1f);
         yield return new WaitForSeconds(2f);
         nodes[0].transform.SetParent(null);
         links[0].transform.SetParent(null);
@@ -407,9 +407,56 @@ public class SinglyLinkedListScript : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Search()
     {
-        
+        int number = 0;
+        StartCoroutine(SearchUtil(number));
+    }
+
+    private IEnumerator SearchUtil(int number)
+    {
+        yield return new WaitForSeconds(10);
+        GameObject CurrentLabel;
+        GameObject CurrentLink;
+
+        CurrentLabel = GameObject.Instantiate(CurrentText, new Vector3(nodes[0].transform.localPosition.x, nodes[0].transform.localPosition.y - .9f, 0), Quaternion.identity);
+        CurrentLabel.transform.localScale = new Vector3(1.2f, 1.2f, 0.001f);
+        CurrentLabel.transform.SetParent(this.transform);
+        CurrentLink = GameObject.Instantiate(link, new Vector3(nodes[0].transform.localPosition.x, nodes[0].transform.localPosition.y - 0.55f, 0), Quaternion.identity);
+        CurrentLink.transform.Rotate(0.0f, 0.0f, 90.0f);
+        CurrentLink.transform.localScale = new Vector3(0.2f, 0.2f, 0.001f);
+        CurrentLink.transform.SetParent(this.transform);
+        CurrentLabel.transform.localPosition = new Vector3(nodes[0].transform.localPosition.x, nodes[0].transform.localPosition.y - .9f, 0);
+        CurrentLink.transform.localPosition = new Vector3(nodes[0].transform.localPosition.x, nodes[0].transform.localPosition.y - 0.55f, 0);
+
+        yield return new WaitForSeconds(1);
+        int i;
+        for (i = 0; i < length; i++)
+        {
+            LeanTween.moveLocalX(CurrentLabel, nodes[i].transform.localPosition.x, .7f);
+            LeanTween.moveLocalX(CurrentLink, nodes[i].transform.localPosition.x, .7f);
+            LeanTween.color(nodes[i], Color.blue, 1f).setLoopPingPong(1);
+            LeanTween.moveLocalX(links[i], links[i].transform.localPosition.x + 0.09f, 1f).setLoopPingPong(1);
+            yield return new WaitForSeconds(1.1f);
+            if (int.Parse(nodes[i].GetComponentInChildren<TextMeshPro>().text) == number)
+            {
+                LeanTween.color(nodes[i], Color.green, 1f);
+                break;
+            }
+
+            yield return new WaitForSeconds(1.5f);
+        }
+
+        if(i == length)
+        {
+            LeanTween.moveLocalX(CurrentLabel, NullText.transform.localPosition.x, .7f);
+            LeanTween.moveLocalX(CurrentLink, NullText.transform.localPosition.x, .7f);
+        }
+        yield return new WaitForSeconds(2f);
+        LeanTween.color(nodes[i], Color.white, 1f);
+        CurrentLabel.transform.SetParent(null);
+        CurrentLink.transform.SetParent(null);
+        Destroy(CurrentLabel);
+        Destroy(CurrentLink);
     }
 }
