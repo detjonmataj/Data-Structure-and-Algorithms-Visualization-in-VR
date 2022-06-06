@@ -19,8 +19,8 @@ public class SinglyLinkedListScript : MonoBehaviour
     public GameObject Tail;
     public GameObject CurrentText;
     public GameObject PreviousLBL;
-    public InputField NumberInputField;
-    public InputField IndexInputField;
+    public TMP_InputField NumberInputField;
+    public TMP_InputField IndexInputField;
 
     private GameObject HeadLink;
     private GameObject TailLink;
