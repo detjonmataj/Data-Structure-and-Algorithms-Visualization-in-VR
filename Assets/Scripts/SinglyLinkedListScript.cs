@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -230,8 +228,8 @@ public class SinglyLinkedListScript : MonoBehaviour
 
     public void Prepend()
     {
-        // int number = int.Parse(NumberInputField.text);
-        StartCoroutine(PrependUtil(1));
+        int number = int.Parse(NumberInputField.text);
+        StartCoroutine(PrependUtil(number));
     }
 
     private IEnumerator AppendUtil(int number)
