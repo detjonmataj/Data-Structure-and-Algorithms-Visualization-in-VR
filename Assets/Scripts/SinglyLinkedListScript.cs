@@ -58,7 +58,7 @@ public class SinglyLinkedListScript : MonoBehaviour
             randomNumber = UnityEngine.Random.Range(minNumber, maxNumber);
 
             // For Testing Purposes
-            // if (i == 3){ randomNumber = 0; }
+            // if (i == 3){ randomNumber = 1; }
             // if (i == length - 1){ randomNumber = 0; }
 
             nodes[i] = GameObject.Instantiate(node, new Vector3((i * 1.2f)+0.6f, 1.0f, 0), Quaternion.identity);
@@ -475,6 +475,7 @@ public class SinglyLinkedListScript : MonoBehaviour
                 if (int.Parse(nodes[i].GetComponentInChildren<TextMeshPro>().text) == number)
                 {
                     LeanTween.color(nodes[i], Color.green, 1f);
+                    yield return new WaitForSeconds(1.5f);
                     break;
                 }
 
