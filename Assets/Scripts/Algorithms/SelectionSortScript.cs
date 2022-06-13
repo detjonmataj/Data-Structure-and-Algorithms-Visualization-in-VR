@@ -37,7 +37,7 @@ public class SelectionSortScript : MonoBehaviour
         for (int i = 0; i < length; i++)
         {
             randomNumber = UnityEngine.Random.Range(minNumber, maxNumber);
-            // GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            // GameObject cube = GameObject.CreatePrimitive(PrimitiveType.NodePrefab);
             // cube.transform.localScale = new Vector3(1.5f, 1.5f, 0.001f);
             // cube.transform.position = new Vector3((i * 1.75f), 0.4f, 0);
             // cube.transform.SetParent(this.transform);
