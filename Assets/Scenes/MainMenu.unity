@@ -4841,7 +4841,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1290089637}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SinglyLinkedListScript, Assembly-CSharp
         m_MethodName: InsertAtPosition
         m_Mode: 1
@@ -5466,7 +5466,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1191641107}
   m_LocalRotation: {x: -0.0000037197024, y: 0.000002168119, z: 0.000000025938789, w: 1}
-  m_LocalPosition: {x: 1.8810748, y: 1.5337609, z: -11.227326}
+  m_LocalPosition: {x: 0.5, y: 5, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5634,7 +5634,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1290089637}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SinglyLinkedListScript, Assembly-CSharp
         m_MethodName: DeleteAtPosition
         m_Mode: 1
@@ -5767,7 +5767,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1290089637}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SinglyLinkedListScript, Assembly-CSharp
         m_MethodName: Prepend
         m_Mode: 1
@@ -5900,7 +5900,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1290089637}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SinglyLinkedListScript, Assembly-CSharp
         m_MethodName: DeleteLast
         m_Mode: 1
@@ -6232,7 +6232,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1290089638}
-  - component: {fileID: 1290089637}
   - component: {fileID: 1290089639}
   m_Layer: 2
   m_Name: DoublyLinkedListObjects
@@ -6241,28 +6240,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1290089637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1290089636}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: baef5e1664ecefe48a79be6514748579, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  node: {fileID: 6342265768688780335, guid: 54b829ddab15da148b5d4c7b1a03f6da, type: 3}
-  link: {fileID: 245699021410420767, guid: 8c99487005653c547988fc8c4a678a75, type: 3}
-  newNodeText: {fileID: 2214150049429078045, guid: b045ec8a1bd8f3246b69b9e5fd8d803b, type: 3}
-  nullTxt: {fileID: 9058321940387028486, guid: a9afdd3c9116f774daf42cc9cc786b3d, type: 3}
-  Head: {fileID: 2767441929501229779, guid: 1bb49466e624a994281b2a31b4cde465, type: 3}
-  Tail: {fileID: 4753451902573016222, guid: ba135bf560ea92b4baa380a4d142a7c9, type: 3}
-  CurrentText: {fileID: 81824558397936866, guid: 4741dca7ec21a594e94a9618107626d5, type: 3}
-  PreviousLBL: {fileID: 4414325973184516574, guid: b8a4187c80c9b7f458e53fc0bb4f2e11, type: 3}
-  NumberInputField: {fileID: 1417091352}
-  IndexInputField: {fileID: 898585108}
 --- !u!4 &1290089638
 Transform:
   m_ObjectHideFlags: 0
@@ -6595,7 +6572,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1290089637}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SinglyLinkedListScript, Assembly-CSharp
         m_MethodName: InitializeRandom
         m_Mode: 1
@@ -7665,7 +7642,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1290089637}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SinglyLinkedListScript, Assembly-CSharp
         m_MethodName: Search
         m_Mode: 1
@@ -8504,7 +8481,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1290089637}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SinglyLinkedListScript, Assembly-CSharp
         m_MethodName: CleanObjects
         m_Mode: 1
@@ -8637,7 +8614,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1290089637}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SinglyLinkedListScript, Assembly-CSharp
         m_MethodName: DeleteFirst
         m_Mode: 1
@@ -9441,7 +9418,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1290089637}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SinglyLinkedListScript, Assembly-CSharp
         m_MethodName: Append
         m_Mode: 1
@@ -10267,7 +10244,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1290089637}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SinglyLinkedListScript, Assembly-CSharp
         m_MethodName: DeleteValue
         m_Mode: 1

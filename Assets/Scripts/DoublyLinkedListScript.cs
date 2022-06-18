@@ -42,7 +42,7 @@ public class DoublyLinkedListScript : MonoBehaviour
     void Start()
     {
         InitializeRandom();
-        // DeleteFirst();
+        DeleteLast();
     }
 
     public void InitializeRandom()
@@ -54,7 +54,7 @@ public class DoublyLinkedListScript : MonoBehaviour
 
         hasObject = true;
         length = UnityEngine.Random.Range(2, maxLength);
-        // length = 2;
+        length = 3;
         nodes = new GameObject[length];
         links = new GameObject[length * 2];
 
@@ -113,16 +113,16 @@ public class DoublyLinkedListScript : MonoBehaviour
                 LastNextLink.transform.SetParent(this.transform);
                 LastNextLink.transform.localPosition = new Vector3((i * 1.2f) + 1.2f, 1.0f, 0);
 
-                TailText = GameObject.Instantiate(Tail, new Vector3((i * 1.2f), 0f, 0), Quaternion.identity);
+                TailText = GameObject.Instantiate(Tail, new Vector3((i * 1.2f), 2f, 0), Quaternion.identity);
                 TailText.transform.localScale = new Vector3(1.2f, 1.2f, 0.001f);
                 TailText.transform.SetParent(this.transform);
-                TailText.transform.localPosition = new Vector3((i * 1.2f) + 0.6f, 0f, 0);
+                TailText.transform.localPosition = new Vector3((i * 1.2f) + 0.6f, 2f, 0);
 
-                TailLink = GameObject.Instantiate(link, new Vector3(i * 1.2f, 0.4f, 0), Quaternion.identity);
+                TailLink = GameObject.Instantiate(link, new Vector3(i * 1.2f, 1.6f, 0), Quaternion.identity);
                 TailLink.transform.localScale = new Vector3(0.2f, 0.2f, 0.001f);
                 TailLink.transform.SetParent(this.transform);
-                TailLink.transform.localPosition = new Vector3((i * 1.2f) + 0.6f, 0.4f, 0);
-                TailLink.transform.Rotate(0.0f, 0.0f, 90.0f);
+                TailLink.transform.localPosition = new Vector3((i * 1.2f) + 0.6f, 1.6f, 0);
+                TailLink.transform.Rotate(0.0f, 0.0f, -90.0f);
             }
             else
             {
@@ -132,12 +132,12 @@ public class DoublyLinkedListScript : MonoBehaviour
                 links[i * 2].transform.SetParent(this.transform);
                 links[i * 2].transform.localPosition = new Vector3((i * 1.2f) + 1.2f, 1.1f, 0);
 
-                links[i*2 + 1] = GameObject.Instantiate(link, new Vector3(nodes[i].transform.localPosition.x, 0.85f, 0), Quaternion.identity);
-                links[i*2 + 1].name = $"Link_{i*2 + 1}";
-                links[i*2 + 1].transform.localScale = new Vector3(0.2f, 0.2f, 0.001f);
-                links[i*2 + 1].transform.SetParent(this.transform);
-                links[i*2 + 1].transform.localPosition = new Vector3((i * 1.2f) + 1.2f, 0.85f, 0);
-                links[i*2 + 1].transform.Rotate(0.0f, 0.0f, 180.0f);
+                links[i * 2 + 1] = GameObject.Instantiate(link, new Vector3(nodes[i].transform.localPosition.x, 0.85f, 0), Quaternion.identity);
+                links[i * 2 + 1].name = $"Link_{i * 2 + 1}";
+                links[i * 2 + 1].transform.localScale = new Vector3(0.2f, 0.2f, 0.001f);
+                links[i * 2 + 1].transform.SetParent(this.transform);
+                links[i * 2 + 1].transform.localPosition = new Vector3((i * 1.2f) + 1.2f, 0.85f, 0);
+                links[i * 2 + 1].transform.Rotate(0.0f, 0.0f, 180.0f);
             }
         }
 
@@ -183,37 +183,18 @@ public class DoublyLinkedListScript : MonoBehaviour
                 Destroy(HeadLink);
                 HeadLink = null;
             }
-            else if (length == 2)
-            {
-                LeanTween.moveLocalX(HeadText, nodes[1].transform.localPosition.x, 1.5f);
-                LeanTween.moveLocalX(HeadLink, nodes[1].transform.localPosition.x, 1.5f);
-                yield return new WaitForSeconds(1.75f);
-
-                LeanTween.color(nodes[0], Color.red, 1f);
-                yield return new WaitForSeconds(1.25f);
-
-                nodes[0].transform.SetParent(null);
-                Destroy(nodes[0]);
-                nodes[0] = nodes[1];
-
-                links[0].transform.SetParent(null);
-                Destroy(links[0]);
-                links[1].transform.SetParent(null);
-                Destroy(links[1]);
-
-                LeanTween.moveLocalX(FirstPreviousText, nodes[1].transform.localPosition.x - 1.4f, 1.5f);
-                LeanTween.moveLocalX(FirstPreviousLink, nodes[1].transform.localPosition.x - 0.6f, 1.5f);
-                yield return new WaitForSeconds(1.75f);
-
-                TailText.transform.SetParent(null);
-                Destroy(TailText);
-                TailText = null;
-                TailLink.transform.SetParent(null);
-                Destroy(TailLink);
-                TailLink = null;
-            }
             else
             {
+                if (length == 2)
+                {
+                    LeanTween.moveLocalY(TailLink, 0.4f, 1.5f);
+                    LeanTween.moveLocalY(TailText, 0f, 1.5f);
+                    yield return new WaitForSeconds(1.75f);
+
+                    LeanTween.rotateZ(TailLink, 90f, 1f);
+                    yield return new WaitForSeconds(1.25f);
+                }
+
                 LeanTween.moveLocalX(HeadText, nodes[1].transform.localPosition.x, 1.5f);
                 LeanTween.moveLocalX(HeadLink, nodes[1].transform.localPosition.x, 1.5f);
                 yield return new WaitForSeconds(1.75f);
@@ -232,6 +213,16 @@ public class DoublyLinkedListScript : MonoBehaviour
                 LeanTween.moveLocalX(FirstPreviousText, nodes[1].transform.localPosition.x - 1.4f, 1.5f);
                 LeanTween.moveLocalX(FirstPreviousLink, nodes[1].transform.localPosition.x - 0.6f, 1.5f);
                 yield return new WaitForSeconds(1.75f);
+
+                if (length == 2)
+                {
+                    TailText.transform.SetParent(null);
+                    Destroy(TailText);
+                    TailText = null;
+                    TailLink.transform.SetParent(null);
+                    Destroy(TailLink);
+                    TailLink = null;
+                }
 
                 for (int i = 1; i < length; i++)
                 {
@@ -256,71 +247,156 @@ public class DoublyLinkedListScript : MonoBehaviour
 
     private IEnumerator DeleteLastUtil()
     {
-        if (length == 0)
+        if (length != 0)
         {
-
-        }
-        else
-        {
-            GameObject tempNull;
-            GameObject CurrentLabel;
-            GameObject CurrentLink;
-
-            CurrentLabel = GameObject.Instantiate(CurrentText, new Vector3(nodes[0].transform.localPosition.x, nodes[0].transform.localPosition.y - .9f, 0), Quaternion.identity);
-            CurrentLabel.transform.localScale = new Vector3(1.2f, 1.2f, 0.001f);
-            CurrentLabel.transform.SetParent(this.transform);
-            CurrentLink = GameObject.Instantiate(link, new Vector3(nodes[0].transform.localPosition.x, nodes[0].transform.localPosition.y - 0.55f, 0), Quaternion.identity);
-            CurrentLink.transform.Rotate(0.0f, 0.0f, 90.0f);
-            CurrentLink.transform.localScale = new Vector3(0.2f, 0.2f, 0.001f);
-            CurrentLink.transform.SetParent(this.transform);
-            CurrentLabel.transform.localPosition = new Vector3(nodes[0].transform.localPosition.x, nodes[0].transform.localPosition.y - .9f, 0);
-            CurrentLink.transform.localPosition = new Vector3(nodes[0].transform.localPosition.x, nodes[0].transform.localPosition.y - 0.55f, 0);
-
-
-            for (int i = 0; i < length - 1; i++)
+            if (length == 1)
             {
-                LeanTween.moveLocalX(CurrentLabel, nodes[i].transform.localPosition.x, .7f);
-                LeanTween.moveLocalX(CurrentLink, nodes[i].transform.localPosition.x, .7f);
-                LeanTween.color(nodes[i], Color.blue, 1f).setLoopPingPong(1);
-                if (i != length - 2)
+                LeanTween.color(nodes[0], Color.red, 1f);
+                yield return new WaitForSeconds(1.25f);
+
+                nodes[0].transform.SetParent(null);
+                Destroy(nodes[0]);
+                nodes[0] = null;
+
+                FirstPreviousText.transform.SetParent(null);
+                Destroy(FirstPreviousText);
+                FirstPreviousText = null;
+                FirstPreviousLink.transform.SetParent(null);
+                Destroy(FirstPreviousLink);
+                FirstPreviousLink = null;
+
+                LastNextText.transform.SetParent(null);
+                Destroy(LastNextText);
+                LastNextText = null;
+                LastNextLink.transform.SetParent(null);
+                Destroy(LastNextLink);
+                LastNextLink = null;
+
+                HeadText.transform.SetParent(null);
+                Destroy(HeadText);
+                HeadText = null;
+                HeadLink.transform.SetParent(null);
+                Destroy(HeadLink);
+                HeadLink = null;
+            }
+            else
+            {
+                GameObject TempNull;
+                GameObject CurrentText;
+                GameObject CurrentLink;
+
+                CurrentText = GameObject.Instantiate(this.CurrentText, new Vector3(nodes[0].transform.localPosition.x, nodes[0].transform.localPosition.y - .9f, 0), Quaternion.identity);
+                CurrentText.transform.localScale = new Vector3(1.2f, 1.2f, 0.001f);
+                CurrentText.transform.SetParent(this.transform);
+
+                CurrentLink = GameObject.Instantiate(link, new Vector3(nodes[0].transform.localPosition.x, nodes[0].transform.localPosition.y - 0.55f, 0), Quaternion.identity);
+                CurrentLink.transform.Rotate(0.0f, 0.0f, 90.0f);
+                CurrentLink.transform.localScale = new Vector3(0.2f, 0.2f, 0.001f);
+                CurrentLink.transform.SetParent(this.transform);
+
+                CurrentText.transform.localPosition = new Vector3(nodes[0].transform.localPosition.x, nodes[0].transform.localPosition.y - .9f, 0);
+                CurrentLink.transform.localPosition = new Vector3(nodes[0].transform.localPosition.x, nodes[0].transform.localPosition.y - 0.55f, 0);
+
+                for (int i = 0; i < length; i++)
                 {
-                    LeanTween.moveLocalX(links[i], links[i].transform.localPosition.x + 0.09f, 1f).setLoopPingPong(1);
+                    LeanTween.moveLocalX(CurrentText, nodes[i].transform.localPosition.x, .7f);
+                    LeanTween.moveLocalX(CurrentLink, nodes[i].transform.localPosition.x, .7f);
+                    LeanTween.color(nodes[i], Color.blue, 1f).setLoopPingPong(1);
+
+                    if (i != length - 1)
+                    {
+                        LeanTween.moveLocalX(links[i * 2], links[i * 2].transform.localPosition.x + 0.09f, 1f).setLoopPingPong(1);
+                    }
+
+                    yield return new WaitForSeconds(1.5f);
                 }
+
+                CurrentText.transform.SetParent(null);
+                CurrentLink.transform.SetParent(null);
+                Destroy(CurrentText);
+                Destroy(CurrentLink);
+
+                if (length == 2)
+                {
+                    LeanTween.moveLocalY(TailLink, 0.4f, 1.5f);
+                    LeanTween.moveLocalY(TailText, 0f, 1.5f);
+                    yield return new WaitForSeconds(1.75f);
+
+                    LeanTween.rotateZ(TailLink, 90f, 1f);
+                    yield return new WaitForSeconds(1.25f);
+                }
+
+                LeanTween.moveLocalX(TailText, nodes[length - 2].transform.localPosition.x, 1.5f);
+                LeanTween.moveLocalX(TailLink, nodes[length - 2].transform.localPosition.x, 1.5f);
                 yield return new WaitForSeconds(1.5f);
+
+                if (length == 2)
+                {
+                    TempNull = Instantiate(LastNextText, new Vector3(HeadLink.transform.localPosition.x + .8f, HeadLink.transform.localPosition.y - .2f, 0), Quaternion.identity);
+                    TempNull.transform.localScale = new Vector3(1.5f, 1.5f, 0.001f);
+                    TempNull.transform.SetParent(this.transform);
+                    TempNull.transform.localPosition = new Vector3(HeadLink.transform.localPosition.x + .8f, HeadLink.transform.localPosition.y - .2f, 0);
+                }
+                else
+                {
+                    TempNull = Instantiate(LastNextText, new Vector3(TailLink.transform.localPosition.x + .8f, TailLink.transform.localPosition.y - .2f, 0), Quaternion.identity);
+                    TempNull.transform.localScale = new Vector3(1.5f, 1.5f, 0.001f);
+                    TempNull.transform.SetParent(this.transform);
+                    TempNull.transform.localPosition = new Vector3(TailLink.transform.localPosition.x + .8f, TailLink.transform.localPosition.y - .2f, 0);
+                }
+
+                LeanTween.rotateZ(links[length * 2 - 4], 50f, 1.5f).setLoopPingPong(1);
+                LeanTween.moveLocalY(links[length * 2 - 4], links[length * 2 - 4].transform.localPosition.y + .3f, 1.5f).setLoopPingPong(1);
+                yield return new WaitForSeconds(1f);
+
+                LeanTween.color(nodes[length - 1], Color.red, 1f);
+                yield return new WaitForSeconds(.6f);
+
+                Destroy(LastNextLink);
+
+                LastNextLink = GameObject.Instantiate(link, new Vector3(
+                    links[length * 2 - 4].transform.position.x,
+                    links[length * 2 - 4].transform.position.y - .4f,
+                    links[length * 2 - 4].transform.position.z
+                ), Quaternion.identity);
+
+                LastNextLink.transform.localScale = new Vector3(0.2f, 0.2f, 0.001f);
+
+                LastNextLink.transform.localPosition = new Vector3(
+                    links[length * 2 - 4].transform.position.x,
+                    links[length * 2 - 4].transform.position.y - .4f,
+                    links[length * 2 - 4].transform.position.z
+                );
+
+                links[length * 2 - 4].transform.SetParent(null);
+                Destroy(links[length * 2 - 4]);
+                links[length * 2 - 4] = null;
+
+                LastNextText.transform.SetParent(null);
+                Destroy(LastNextText);
+
+                nodes[length - 1].transform.SetParent(null);
+                Destroy(nodes[length - 1]);
+
+                links[length * 2 - 3].transform.SetParent(null);
+                Destroy(links[length * 2 - 3]);
+
+                LastNextText = TempNull;
+                LeanTween.moveLocalX(LastNextText, nodes[length - 2].transform.localPosition.x + 1.4f, 1.5f);
+                LeanTween.moveLocalY(LastNextText, .95f, 1.5f);
+                yield return new WaitForSeconds(1.75f);
+
+                if (length == 2)
+                {
+                    TailText.transform.SetParent(null);
+                    Destroy(TailText);
+                    TailText = null;
+                    TailLink.transform.SetParent(null);
+                    Destroy(TailLink);
+                    TailLink = null;
+                }
             }
 
-            LeanTween.moveLocalX(TailText, nodes[length - 2].transform.localPosition.x, 1.5f);
-            LeanTween.moveLocalX(TailLink, nodes[length - 2].transform.localPosition.x, 1.5f);
-            yield return new WaitForSeconds(1.5f);
-
-            tempNull = Instantiate(LastNextText, new Vector3(TailLink.transform.localPosition.x + .8f, TailLink.transform.localPosition.y - .2f, 0), Quaternion.identity);
-            tempNull.transform.localScale = new Vector3(1.5f, 1.5f, 0.001f);
-            tempNull.transform.SetParent(this.transform);
-            tempNull.transform.localPosition = new Vector3(TailLink.transform.localPosition.x + .8f, TailLink.transform.localPosition.y - .2f, 0);
-
-            LeanTween.rotateZ(links[length - 2], 50, 1.5f).setLoopPingPong(1);
-            LeanTween.moveLocalY(links[length - 2], links[length - 2].transform.localPosition.y + .3f, 1.5f).setLoopPingPong(1);
-            yield return new WaitForSeconds(1f);
-            LeanTween.color(nodes[length - 1], Color.red, 1f);
-            yield return new WaitForSeconds(.6f);
-            LastNextText.transform.SetParent(null);
-            Destroy(LastNextText);
-            nodes[length - 1].transform.SetParent(null);
-            links[length - 1].transform.SetParent(null);
-            Destroy(links[length - 1]);
-            Destroy(nodes[length - 1]);
-
-            CurrentLabel.transform.SetParent(null);
-            CurrentLink.transform.SetParent(null);
-            Destroy(CurrentLabel);
-            Destroy(CurrentLink);
-
-            LeanTween.moveLocalX(tempNull, nodes[length - 2].transform.localPosition.x + 1.4f, 1.5f);
-            LeanTween.moveLocalY(tempNull, .95f, 1.5f);
-
-            // yield return new WaitForSeconds(2f);
-
-            LastNextText = tempNull;
             length--;
         }
     }
@@ -529,7 +605,7 @@ public class DoublyLinkedListScript : MonoBehaviour
             Destroy(TailText);
             TailLink.transform.parent = null;
             Destroy(TailLink);
-            
+
             LastNextText.transform.parent = null;
             Destroy(LastNextText);
             LastNextLink.transform.parent = null;

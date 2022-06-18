@@ -35,6 +35,7 @@ public class SinglyLinkedListScript : MonoBehaviour
     void Start()
     {
         InitializeRandom();
+        DeleteLast();
     }
 
     public void InitializeRandom()
