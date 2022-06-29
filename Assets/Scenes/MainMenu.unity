@@ -3837,7 +3837,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: This project is created by Detjon Mataj.
+  m_Text: This project was created by Detjon Mataj.
 --- !u!222 &1084798459
 CanvasRenderer:
   m_ObjectHideFlags: 0
