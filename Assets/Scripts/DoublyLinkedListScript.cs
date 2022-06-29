@@ -1,8 +1,6 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-
 public class DoublyLinkedListScript : MonoBehaviour
 {
     public GameObject node;
@@ -42,7 +40,6 @@ public class DoublyLinkedListScript : MonoBehaviour
     void Start()
     {
         InitializeRandom();
-        Search();
     }
 
     public void InitializeRandom()
@@ -63,14 +60,14 @@ public class DoublyLinkedListScript : MonoBehaviour
         for (int i = 0; i < length; i++)
         {
             
-            if (i != 2)
-            {
-                randomNumber = UnityEngine.Random.Range(minNumber, maxNumber);
-            }
-            else
-            {
-                randomNumber = 5;
-            }
+            // if (i != 2)
+            // {
+                 randomNumber = UnityEngine.Random.Range(minNumber, maxNumber);
+            // }
+            // else
+            // {
+            //     randomNumber = 5;
+            // }
 
             // For Testing Purposes
             // if (i == 3){ randomNumber = 1; }
