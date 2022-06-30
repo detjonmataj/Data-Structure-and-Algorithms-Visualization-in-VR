@@ -70,6 +70,7 @@ public class CircularLinkedListScript : MonoBehaviour
         //DeleteAtPosition();
         //InsertAtPosition();
         //Search();
+        //final()
 
     }
 
@@ -79,8 +80,11 @@ public class CircularLinkedListScript : MonoBehaviour
     }
     public IEnumerator tessss()
     {
-        yield return StartCoroutine(PrependUtil(12));
-        yield return StartCoroutine(PrependUtil(11));
+        //yield return StartCoroutine(AppendUtil(12));
+        yield return StartCoroutine(AppendUtil(12));
+        //yield return StartCoroutine(DeleteLastUtil());
+        //yield return StartCoroutine(DeleteValueUtil(12));
+        yield return StartCoroutine(DeleteAtPositionUtil(length-1));
     }
 
 
@@ -302,10 +306,10 @@ public class CircularLinkedListScript : MonoBehaviour
             Destroy(nodes[0]);
 
             //we are adjasting the returning array here
-                //the base
+            //the base
             LeanTween.moveLocalX(head_pointer2, head_pointer2.transform.localPosition.x + 0.6f, 1.5f);
-            LeanTween.scaleX(head_pointer2, (tt / 2.0f)  - 0.5f, 1.5f);
-                //the poll
+            LeanTween.scaleX(head_pointer2, (tt / 2.0f) - 0.5f, 1.5f);
+            //the poll
             LeanTween.moveLocalX(straightlinebegining, straightline.transform.localPosition.x + 1.2f, 1.5f);
 
             for (int i = 1; i < length; i++)
@@ -338,6 +342,7 @@ public class CircularLinkedListScript : MonoBehaviour
         }
         else
         {
+            
             // GameObject tempNull;
             GameObject CurrentLabel;
             GameObject CurrentLink;
@@ -405,7 +410,7 @@ public class CircularLinkedListScript : MonoBehaviour
             LeanTween.moveLocalX(head_pointer2, head_pointer2.transform.localPosition.x - 0.6f, 1.5f);
             //we are rescaling#
             //we are also decrementing the number of nodes here
-            LeanTween.scaleX(head_pointer2, (length - 1) * 0.353f, 1.5f);
+            LeanTween.scaleX(head_pointer2, (length - 2) * 0.353f, 1.5f);
             //the poll
             LeanTween.moveLocalX(straightlineend, straightlineend.transform.localPosition.x - 1.2f, 1.5f);
 
@@ -425,6 +430,7 @@ public class CircularLinkedListScript : MonoBehaviour
             //length--;
 
             Debug.Log("the length is:::: " + length);
+            length--;
         }
     }
 
@@ -800,7 +806,7 @@ public class CircularLinkedListScript : MonoBehaviour
     private IEnumerator DeleteValueUtil(int number)
     {
 
-
+        bool last_elemet = false;
         if (length == 0 || length<2)
         {
 
@@ -808,6 +814,10 @@ public class CircularLinkedListScript : MonoBehaviour
         else if (int.Parse(nodes[0].GetComponentInChildren<TextMeshPro>().text) == number)
         {
             DeleteFirst();
+            yield break;
+        }else if (int.Parse(nodes[length-1].GetComponentInChildren<TextMeshPro>().text) == number)
+        {
+            DeleteLast();
             yield break;
         }
         else
@@ -865,8 +875,10 @@ public class CircularLinkedListScript : MonoBehaviour
                     previousLink.SetActive(true);
                 }
 
+                //adjasting for changes
                 if (i == length - 1)
                 {
+                    last_elemet = true;
                     LeanTween.moveLocalX(TailLabel, TailLabel.transform.localPosition.x + 1.0f, .7f);
                     LeanTween.moveLocalX(TailLink, TailLink.transform.localPosition.x + 0.5f, .7f);
                     LeanTween.rotate(TailLink, new Vector3(0.0f, .0f, -135.0f), .7f);
@@ -878,43 +890,38 @@ public class CircularLinkedListScript : MonoBehaviour
                     LeanTween.moveLocalX(previousLink, nodes[i - 1].transform.localPosition.x, .9f);
                 }
 
+
                 if (int.Parse(nodes[i].GetComponentInChildren<TextMeshPro>().text) == number)
                 {
+
                     yield return new WaitForSeconds(1.1f);
+
                     LeanTween.moveLocalY(nodes[i], nodes[i].transform.localPosition.y + 0.5f, 1f);
-                    LeanTween.rotateZ(links[i], -60, 1f);
-                    LeanTween.moveLocalY(links[i], nodes[i].transform.localPosition.y + 0.3f, 1f);
+                    LeanTween.rotateZ(links[i-1], +60, 1f);
+                    LeanTween.moveLocalY(links[i-1], nodes[i].transform.localPosition.y + 0.3f, 1f);
+                    LeanTween.moveLocalY(CurrentLabel, CurrentLabel.transform.localPosition.y + 0.5f,1f);
+                    LeanTween.moveLocalY(CurrentLink, CurrentLink.transform.localPosition.y + 0.5f, 1f);
                     yield return new WaitForSeconds(1.5f);
-                    LeanTween.scaleX(links[i - 1], 1.0f, 1f).setLoopPingPong(1);
-                    LeanTween.moveLocalX(links[i - 1], links[i - 1].transform.localPosition.x + 0.6f, 1f).setLoopPingPong(1);
+
+                    if (!(i == length - 1))
+                    {
+                        LeanTween.rotateZ(links[i - 1], 0, 1f);
+                        LeanTween.moveLocalY(links[i - 1], links[i - 1].transform.localPosition.y - 0.3f, 1f);
+                        yield return new WaitForSeconds(1f);
+
+                        LeanTween.scaleX(links[i - 1], 1.0f, 1.4f).setLoopPingPong(1);
+                        LeanTween.moveLocalX(links[i - 1], links[i - 1].transform.localPosition.x + 0.6f, 1.4f).setLoopPingPong(1);
+                    }
+
                     LeanTween.color(nodes[i], Color.red, 1f);
                     yield return new WaitForSeconds(1.1f);
                     nodes[i].transform.SetParent(null);
                     Destroy(nodes[i]);
-                    links[i].transform.SetParent(null);
-                    Destroy(links[i]);
 
-                    if (i == length - 1)
+                    if (i < length - 1)
                     {
-                        LeanTween.moveLocalX(NullText, NullText.transform.localPosition.x - 1.2f, 1f);
-                        LeanTween.moveLocalX(TailLabel, TailLabel.transform.localPosition.x - 1.2f, 1f);
-                        LeanTween.moveLocalX(TailLink, TailLink.transform.localPosition.x - 1.2f, 1f);
-                    }
-                    else
-                    {
-                        for (int j = i + 1; j < length; j++)
-                        {
-                            LeanTween.moveLocalX(nodes[j], nodes[j].transform.localPosition.x - 1.2f, 1f);
-                            LeanTween.moveLocalX(links[j], links[j].transform.localPosition.x - 1.2f, 1f);
-                            nodes[j - 1] = nodes[j];
-                            links[j - 1] = links[j];
-                            if (j == length - 1)
-                            {
-                                LeanTween.moveLocalX(TailLabel, TailLabel.transform.localPosition.x - 1.2f, 1f);
-                                LeanTween.moveLocalX(TailLink, TailLink.transform.localPosition.x - 1.2f, 1f);
-                                LeanTween.moveLocalX(NullText, NullText.transform.localPosition.x - 1.2f, 1f);
-                            }
-                        }
+                        links[i].transform.SetParent(null);
+                        Destroy(links[i]);
                     }
 
                     CurrentLabel.transform.SetParent(null);
@@ -926,9 +933,52 @@ public class CircularLinkedListScript : MonoBehaviour
                     Destroy(previousLabel);
                     Destroy(previousLink);
 
-                    LeanTween.moveLocalX(TailLabel, TailLabel.transform.localPosition.x - 1.0f, .7f);
-                    LeanTween.moveLocalX(TailLink, TailLink.transform.localPosition.x - 0.5f, .7f);
-                    LeanTween.rotate(TailLink, new Vector3(0.0f, .0f, -90), .7f);
+                    if (last_elemet)
+                    {
+                        LeanTween.moveLocalX(TailLabel, TailLabel.transform.localPosition.x - 1.0f, .7f);
+                        LeanTween.moveLocalX(TailLink, TailLink.transform.localPosition.x - 0.5f, .7f);
+                        LeanTween.rotate(TailLink, new Vector3(0.0f, .0f, -90), .7f);
+                    }
+
+                    yield return new WaitForSeconds(.7f);
+
+
+                    if (i == length - 1)
+                    {
+                        //LeanTween.moveLocalX(NullText, NullText.transform.localPosition.x - 1.2f, 1f);
+                        LeanTween.moveLocalX(TailLabel, TailLabel.transform.localPosition.x - 1.2f, 1f);
+                        LeanTween.moveLocalX(TailLink, TailLink.transform.localPosition.x - 1.2f, 1f);
+                    }
+                    else
+                    {
+                        for (int j = i + 1; j < length; j++)
+                        {
+                            LeanTween.moveLocalX(nodes[j], nodes[j].transform.localPosition.x - 1.2f, 1f);
+                            
+                            if(j<length-1)
+                            LeanTween.moveLocalX(links[j], links[j].transform.localPosition.x - 1.2f, 1f);
+                            nodes[j - 1] = nodes[j];
+                            links[j - 1] = links[j];
+
+                            if (j == length - 1)
+                            {
+                                LeanTween.moveLocalX(TailLabel, TailLabel.transform.localPosition.x - 1.2f, 1f);
+                                LeanTween.moveLocalX(TailLink, TailLink.transform.localPosition.x - 1.2f, 1f);
+                                //LeanTween.moveLocalX(NullText, NullText.transform.localPosition.x - 1.2f, 1f);
+                            }
+                        }
+                    }
+
+
+                    //we are adjasting the returning array here
+                    //the base
+                    LeanTween.moveLocalX(head_pointer2, head_pointer2.transform.localPosition.x - 0.6f, 1f);
+                    //we are rescaling#
+                    LeanTween.scaleX(head_pointer2, (length - 2) * 0.353f, 1f);
+                    //the poll
+                    LeanTween.moveLocalX(straightlineend, straightlineend.transform.localPosition.x - 1.2f, 1f);
+                    //yield return new WaitForSeconds(1.8f);
+
                     yield return new WaitForSeconds(.7f);
                          
                     break;
@@ -963,8 +1013,8 @@ public class CircularLinkedListScript : MonoBehaviour
 
     public void DeleteAtPosition()
     {
-        int position = int.Parse(IndexInputField.text);
-        //int position = 2;
+        //int position = int.Parse(IndexInputField.text);
+        int position = 2;
         if (position == 0 || position > length) return;
         StartCoroutine(DeleteAtPositionUtil(position - 1));
     }
@@ -1021,6 +1071,8 @@ public class CircularLinkedListScript : MonoBehaviour
                 LeanTween.moveLocalX(CurrentLabel, nodes[i].transform.localPosition.x, .7f);
                 LeanTween.moveLocalX(CurrentLink, nodes[i].transform.localPosition.x, .7f);
                 LeanTween.color(nodes[i], Color.blue, 1f).setLoopPingPong(1);
+                
+                if(i<length-1)
                 LeanTween.moveLocalX(links[i], links[i].transform.localPosition.x + 0.09f, 1f).setLoopPingPong(1);
 
                 if (i == 1)
@@ -1046,16 +1098,29 @@ public class CircularLinkedListScript : MonoBehaviour
                     LeanTween.moveLocalY(links[i], nodes[i].transform.localPosition.y + 0.3f, 1f);   
                     yield return new WaitForSeconds(1.5f);
 
-                    LeanTween.scaleX(links[i - 1], 1.0f, 1f).setLoopPingPong(1);
-                    LeanTween.moveLocalX(links[i - 1], links[i - 1].transform.localPosition.x + 0.6f, 1f).setLoopPingPong(1);
+
+                    if (i < length - 1)
+                    {
+                        LeanTween.scaleX(links[i - 1], 1.0f, 1f).setLoopPingPong(1);
+                        LeanTween.moveLocalX(links[i - 1], links[i - 1].transform.localPosition.x + 0.6f, 1f).setLoopPingPong(1);
+                    }
+                    else
+                    {
+                        links[i - 1].transform.SetParent(null);
+                        Destroy(links[i - 1]);
+                    }
+
                     LeanTween.color(nodes[i], Color.red, 1f);
                     yield return new WaitForSeconds(1.1f);
 
 
                     nodes[i].transform.SetParent(null);
                     Destroy(nodes[i]);
-                    links[i].transform.SetParent(null);
-                    Destroy(links[i]);
+                    if (i < length - 1)
+                    {
+                        links[i].transform.SetParent(null);
+                        Destroy(links[i]);
+                    }
 
 
                     //LeanTween.moveLocalX(NullText, NullText.transform.localPosition.x - 1.2f, 1f);
@@ -1074,12 +1139,11 @@ public class CircularLinkedListScript : MonoBehaviour
                             links[j - 1] = links[j];
                         }
 
-                        if (j == length - 1)
-                        {
-                            LeanTween.moveLocalX(TailLabel, TailLabel.transform.localPosition.x - 1.2f, 1f);
-                            LeanTween.moveLocalX(TailLink, TailLink.transform.localPosition.x - 1.2f, 1f);
-                        }
-                            //we are adjasting the returning array here
+                    } 
+                        LeanTween.moveLocalX(TailLabel, TailLabel.transform.localPosition.x - 1.2f, 1f);
+                        LeanTween.moveLocalX(TailLink, TailLink.transform.localPosition.x - 1.2f, 1f);
+                       
+                      //we are adjasting the returning array here
                             //the base
                             LeanTween.moveLocalX(head_pointer2, head_pointer2.transform.localPosition.x - 0.6f, 1f);
                             //we are rescaling#
@@ -1087,11 +1151,6 @@ public class CircularLinkedListScript : MonoBehaviour
                             //the poll
                             LeanTween.moveLocalX(straightlineend, straightlineend.transform.localPosition.x - 1.2f, 1f);
                             //yield return new WaitForSeconds(1.8f);
-
-
-                        
-                    }
-                    
 
                     CurrentLabel.transform.SetParent(null);
                     CurrentLink.transform.SetParent(null);
@@ -1127,10 +1186,10 @@ public class CircularLinkedListScript : MonoBehaviour
 
     public void InsertAtPosition()
     {
-        int number = int.Parse(NumberInputField.text);
-        int position = int.Parse(IndexInputField.text);
-        //int number = 12;
-        //int position = 2;
+        //int number = int.Parse(NumberInputField.text);
+        //int position = int.Parse(IndexInputField.text);
+        int number = 12;
+        int position = 2;
         if (position == 0 || position > length + 1) return;
         StartCoroutine(InsertAtPositionUtil(number, position - 1));
     }
@@ -1191,6 +1250,7 @@ public class CircularLinkedListScript : MonoBehaviour
 
             for (i = 0; i < length; i++)
             {
+                
                 LeanTween.moveLocalX(CurrentLabel, nodes[i].transform.localPosition.x, .7f);
                 LeanTween.moveLocalX(CurrentLink, nodes[i].transform.localPosition.x, .7f);
                 LeanTween.color(nodes[i], Color.blue, 1f).setLoopPingPong(1);
@@ -1213,6 +1273,12 @@ public class CircularLinkedListScript : MonoBehaviour
 
                 if (i == position )
                 {
+                    if (position == length - 1)
+                    {
+                        DeleteLast();
+                        yield break;
+
+                    }
                     yield return new WaitForSeconds(1.1f);
 
                     //LeanTween.moveLocalY(CurrentLabel, CurrentLabel.transform.localPosition.y + 1.8f, 1f);
