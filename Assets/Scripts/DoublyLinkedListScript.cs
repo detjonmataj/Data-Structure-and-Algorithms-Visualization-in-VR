@@ -42,7 +42,7 @@ public class DoublyLinkedListScript : MonoBehaviour
     void Start()
     {
         InitializeRandom();
-        Search();
+        // Search();
     }
 
     public void InitializeRandom()
@@ -54,7 +54,7 @@ public class DoublyLinkedListScript : MonoBehaviour
 
         hasObject = true;
         length = UnityEngine.Random.Range(2, maxLength);
-        length = 5;
+        // length = 5;
         nodes = new GameObject[100];
         links = new GameObject[200];
 
@@ -62,15 +62,8 @@ public class DoublyLinkedListScript : MonoBehaviour
 
         for (int i = 0; i < length; i++)
         {
-            
-            if (i != 2)
-            {
-                randomNumber = UnityEngine.Random.Range(minNumber, maxNumber);
-            }
-            else
-            {
-                randomNumber = 5;
-            }
+
+            randomNumber = UnityEngine.Random.Range(minNumber, maxNumber);
 
             // For Testing Purposes
             // if (i == 3){ randomNumber = 1; }
@@ -346,8 +339,8 @@ public class DoublyLinkedListScript : MonoBehaviour
 
     public void Append()
     {
-        // int number = int.Parse(NumberInputField.text);
-        int number = 5;
+        int number = int.Parse(NumberInputField.text);
+        // int number = 5;
         StartCoroutine(AppendUtil(number));
     }
 
@@ -498,8 +491,8 @@ public class DoublyLinkedListScript : MonoBehaviour
 
     public void Prepend()
     {
-        // int number = int.Parse(NumberInputField.text);
-        int number = 5;
+        int number = int.Parse(NumberInputField.text);
+        // int number = 5;
         StartCoroutine(PrependUtil(number));
     }
 
@@ -713,8 +706,8 @@ public class DoublyLinkedListScript : MonoBehaviour
 
     public void Search()
     {
-        // int number = int.Parse(NumberInputField.text);
-        int number = 5;
+        int number = int.Parse(NumberInputField.text);
+        // int number = 5;
         StartCoroutine(SearchUtil(number));
     }
 

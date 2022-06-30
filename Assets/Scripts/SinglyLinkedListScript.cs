@@ -35,7 +35,7 @@ public class SinglyLinkedListScript : MonoBehaviour
     void Start()
     {
         InitializeRandom();
-        DeleteLast();
+        Append();
     }
 
     public void InitializeRandom()
@@ -47,7 +47,7 @@ public class SinglyLinkedListScript : MonoBehaviour
 
         hasObject = true;
         length = UnityEngine.Random.Range(2, maxLength);
-        //length = 10;
+        length = 3;
         nodes = new GameObject[100];
         links = new GameObject[100];
         
@@ -223,7 +223,8 @@ public class SinglyLinkedListScript : MonoBehaviour
 
     public void Append()
     {
-        int number = int.Parse(NumberInputField.text);
+        // int number = int.Parse(NumberInputField.text);
+        int number = 4;
         StartCoroutine(AppendUtil(number));
     }
 
