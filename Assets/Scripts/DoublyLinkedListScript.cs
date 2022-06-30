@@ -1,8 +1,6 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-
 public class DoublyLinkedListScript : MonoBehaviour
 {
     public GameObject node;
@@ -62,7 +60,6 @@ public class DoublyLinkedListScript : MonoBehaviour
 
         for (int i = 0; i < length; i++)
         {
-
             randomNumber = UnityEngine.Random.Range(minNumber, maxNumber);
 
             // For Testing Purposes

@@ -35,7 +35,8 @@ public class SinglyLinkedListScript : MonoBehaviour
     void Start()
     {
         InitializeRandom();
-        Append();
+        // Implicit Boxing avoid if possible
+        // NumberInputField.text = 990.ToString(); // Some C# Magicr
     }
 
     public void InitializeRandom()
@@ -46,8 +47,8 @@ public class SinglyLinkedListScript : MonoBehaviour
         }
 
         hasObject = true;
-        length = UnityEngine.Random.Range(2, maxLength);
-        length = 3;
+        length = Random.Range(2, maxLength);
+        //length = 10;
         nodes = new GameObject[100];
         links = new GameObject[100];
         
@@ -56,13 +57,13 @@ public class SinglyLinkedListScript : MonoBehaviour
         for (int i = 0; i < length; i++)
         {
 
-            randomNumber = UnityEngine.Random.Range(minNumber, maxNumber);
+            randomNumber = Random.Range(minNumber, maxNumber);
 
             // For Testing Purposes
             // if (i == 3){ randomNumber = 1; }
             // if (i == length - 1){ randomNumber = 0; }
 
-            nodes[i] = GameObject.Instantiate(node, new Vector3((i * 1.2f)+0.6f, 1.0f, 0), Quaternion.identity);
+            nodes[i] = Instantiate(node, new Vector3((i * 1.2f)+0.6f, 1.0f, 0), Quaternion.identity);
             nodes[i].transform.SetParent(this.transform);
             nodes[i].transform.localScale = new Vector3(0.6f, 0.6f, 0.001f);
             nodes[i].GetComponentInChildren<TextMeshPro>().text = randomNumber.ToString();
@@ -83,7 +84,7 @@ public class SinglyLinkedListScript : MonoBehaviour
                 HeadLink.transform.localPosition = new Vector3((i * 1.2f) + 0.6f, 1.6f, 0);
             }
 
-            links[i] = GameObject.Instantiate(link, new Vector3(nodes[i].transform.localPosition.x, 1.0f, 0), Quaternion.identity);
+            links[i] = Instantiate(link, new Vector3(nodes[i].transform.localPosition.x, 1.0f, 0), Quaternion.identity);
             if (i == length - 1)
             {
                 NullText = GameObject.Instantiate(nullTxt, new Vector3(nodes[i].transform.localPosition.x + 0.8f, 0.95f, 0), Quaternion.identity);
@@ -238,6 +239,50 @@ public class SinglyLinkedListScript : MonoBehaviour
     {
         if (length == 0)
         {
+            nodes = new GameObject[100];
+            links = new GameObject[100];
+            length = 1;
+            nodes[0] = Instantiate(node, new Vector3(0.6f, 1.0f, 0), Quaternion.identity);
+            nodes[0].transform.SetParent(this.transform);
+            nodes[0].transform.localScale = new Vector3(0.6f, 0.6f, 0.001f);
+            nodes[0].GetComponentInChildren<TextMeshPro>().text = NumberInputField.text;
+            nodes[0].GetComponentInChildren<TextMeshPro>().color = Color.black;
+            nodes[0].transform.localPosition = new Vector3(0.6f, 1.0f, 0);
+
+
+            HeadLabel = Instantiate(Head, new Vector3(0 , 2f, 0), Quaternion.identity);
+            HeadLabel.transform.localScale = new Vector3(1.2f, 1.2f, 0.001f);
+            HeadLabel.transform.SetParent(this.transform);
+            HeadLink = Instantiate(link, new Vector3(0, 1.6f, 0), Quaternion.identity);
+            HeadLink.transform.Rotate(0.0f, 0.0f, -90.0f);
+            HeadLink.transform.localScale = new Vector3(0.2f, 0.2f, 0.001f);
+            HeadLink.transform.SetParent(this.transform);
+            HeadLabel.transform.localPosition = new Vector3(0.6f, 2f, 0);
+            HeadLink.transform.localPosition = new Vector3(0.6f, 1.6f, 0);
+
+            links[0] = Instantiate(link, new Vector3(nodes[0].transform.localPosition.x, 1.0f, 0), Quaternion.identity);
+
+            NullText = Instantiate(nullTxt, new Vector3(nodes[0].transform.localPosition.x + 0.8f, 0.95f, 0), Quaternion.identity);
+            NullText.transform.localScale = new Vector3(1.5f, 1.5f, 0.001f);
+            NullText.transform.SetParent(this.transform);
+            NullText.transform.localPosition = new Vector3(nodes[0].transform.localPosition.x + 1.4f, 0.95f, 0);
+
+            TailLabel = Instantiate(Tail, new Vector3(0, 2f, 0), Quaternion.identity);
+            TailLabel.transform.localScale = new Vector3(1.2f, 1.2f, 0.001f);
+            TailLabel.transform.SetParent(this.transform);
+            TailLabel.transform.localPosition = new Vector3(0.6f, 2f, 0);
+
+            TailLink = Instantiate(link, new Vector3(0, 1.6f, 0), Quaternion.identity);
+            TailLink.transform.Rotate(0.0f, 0.0f, -90.0f);
+            TailLink.transform.localScale = new Vector3(0.2f, 0.2f, 0.001f);
+            TailLink.transform.SetParent(this.transform);
+            TailLink.transform.localPosition = new Vector3(0.6f, 1.6f, 0);
+            
+            links[0].transform.localScale = new Vector3(0.2f, 0.2f, 0.001f);
+            links[0].transform.SetParent(this.transform);
+            links[0].transform.localPosition = new Vector3(1.2f, 1.0f, 0);
+
+            transform.position = new Vector3(-length / 2, 5 / 2f, 0);
 
         }
         else
@@ -317,6 +362,7 @@ public class SinglyLinkedListScript : MonoBehaviour
 
         if (length == 0)
         {
+            Append();
 
         }
         else
@@ -800,12 +846,7 @@ public class SinglyLinkedListScript : MonoBehaviour
     private IEnumerator InsertAtPositionUtil(int number, int position)
     {
 
-
-        if (length == 0)
-        {
-
-        }
-        else if (position == 0)
+        if (position == 0 || length == 0)
         {
             Prepend();
             yield break;

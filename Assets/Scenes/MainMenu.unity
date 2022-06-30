@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5664077, g: 0.5652003, b: 0.5664077, a: 1}
+  m_IndirectSpecularColor: {r: 0.5657207, g: 0.56572044, b: 0.56572336, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3290,7 +3290,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &733769136
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3303,8 +3303,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 526639093}
-  - {fileID: 1743156310}
   - {fileID: 1334457999}
+  - {fileID: 1743156310}
   m_Father: {fileID: 1510080234}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4670,7 +4670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   node: {fileID: 6342265768688780335, guid: 54b829ddab15da148b5d4c7b1a03f6da, type: 3}
-  link: {fileID: 245699021410420767, guid: 8c99487005653c547988fc8c4a678a75, type: 3}
+  link: {fileID: 5885207926123501819, guid: bbef683188f12344c924944c1939a8d5, type: 3}
   newNodeText: {fileID: 2214150049429078045, guid: b045ec8a1bd8f3246b69b9e5fd8d803b, type: 3}
   nullTxt: {fileID: 9058321940387028486, guid: a9afdd3c9116f774daf42cc9cc786b3d, type: 3}
   Head: {fileID: 2767441929501229779, guid: 1bb49466e624a994281b2a31b4cde465, type: 3}
@@ -4961,7 +4961,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: This project is created by Detjon Mataj.
+  m_Text: This project was created by Detjon Mataj.
 --- !u!222 &1084798459
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5466,7 +5466,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1191641107}
   m_LocalRotation: {x: -0.0000037197024, y: 0.000002168119, z: 0.000000025938789, w: 1}
-  m_LocalPosition: {x: 0.5, y: 5, z: -5}
+  m_LocalPosition: {x: 1.54, y: 2.68, z: -3.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5767,8 +5767,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SinglyLinkedListScript, Assembly-CSharp
+      - m_Target: {fileID: 1290089637}
+        m_TargetAssemblyTypeName: DoublyLinkedListScript, Assembly-CSharp
         m_MethodName: Prepend
         m_Mode: 1
         m_Arguments:
@@ -5900,8 +5900,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SinglyLinkedListScript, Assembly-CSharp
+      - m_Target: {fileID: 1290089637}
+        m_TargetAssemblyTypeName: DoublyLinkedListScript, Assembly-CSharp
         m_MethodName: DeleteLast
         m_Mode: 1
         m_Arguments:
@@ -6232,7 +6232,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1290089638}
-  - component: {fileID: 1290089639}
+  - component: {fileID: 1290089637}
   m_Layer: 2
   m_Name: DoublyLinkedListObjects
   m_TagString: Untagged
@@ -6240,6 +6240,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1290089637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290089636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbe972e842a1343408e8c9c17b902358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  node: {fileID: 6342265768688780335, guid: 54b829ddab15da148b5d4c7b1a03f6da, type: 3}
+  link: {fileID: 5885207926123501819, guid: bbef683188f12344c924944c1939a8d5, type: 3}
+  newNodeText: {fileID: 2214150049429078045, guid: b045ec8a1bd8f3246b69b9e5fd8d803b, type: 3}
+  nullTxt: {fileID: 9058321940387028486, guid: a9afdd3c9116f774daf42cc9cc786b3d, type: 3}
+  Head: {fileID: 2767441929501229779, guid: 1bb49466e624a994281b2a31b4cde465, type: 3}
+  Tail: {fileID: 4753451902573016222, guid: ba135bf560ea92b4baa380a4d142a7c9, type: 3}
+  CurrentText: {fileID: 81824558397936866, guid: 4741dca7ec21a594e94a9618107626d5, type: 3}
+  PreviousLBL: {fileID: 4414325973184516574, guid: b8a4187c80c9b7f458e53fc0bb4f2e11, type: 3}
+  NumberInputField: {fileID: 0}
+  IndexInputField: {fileID: 0}
 --- !u!4 &1290089638
 Transform:
   m_ObjectHideFlags: 0
@@ -6254,28 +6276,6 @@ Transform:
   m_Father: {fileID: 1740406525}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1290089639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1290089636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13260a9e89551364fb389c12e383ec3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  node: {fileID: 6342265768688780335, guid: 54b829ddab15da148b5d4c7b1a03f6da, type: 3}
-  link: {fileID: 245699021410420767, guid: 8c99487005653c547988fc8c4a678a75, type: 3}
-  newNodeText: {fileID: 2214150049429078045, guid: b045ec8a1bd8f3246b69b9e5fd8d803b, type: 3}
-  nullTxt: {fileID: 9058321940387028486, guid: a9afdd3c9116f774daf42cc9cc786b3d, type: 3}
-  Head: {fileID: 2767441929501229779, guid: 1bb49466e624a994281b2a31b4cde465, type: 3}
-  Tail: {fileID: 4753451902573016222, guid: ba135bf560ea92b4baa380a4d142a7c9, type: 3}
-  CurrentText: {fileID: 81824558397936866, guid: 4741dca7ec21a594e94a9618107626d5, type: 3}
-  PreviousLBL: {fileID: 4414325973184516574, guid: b8a4187c80c9b7f458e53fc0bb4f2e11, type: 3}
-  NumberInputField: {fileID: 1417091352}
-  IndexInputField: {fileID: 898585108}
 --- !u!1 &1301952425
 GameObject:
   m_ObjectHideFlags: 0
@@ -6572,8 +6572,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SinglyLinkedListScript, Assembly-CSharp
+      - m_Target: {fileID: 1290089637}
+        m_TargetAssemblyTypeName: DoublyLinkedListScript, Assembly-CSharp
         m_MethodName: InitializeRandom
         m_Mode: 1
         m_Arguments:
@@ -6788,7 +6788,7 @@ RectTransform:
   m_Children:
   - {fileID: 687436301}
   m_Father: {fileID: 733769136}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6851,7 +6851,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 334317316}
+      - m_Target: {fileID: 1740406521}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -7655,9 +7655,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SinglyLinkedListScript, Assembly-CSharp
-        m_MethodName: Search
+      - m_Target: {fileID: 1290089637}
+        m_TargetAssemblyTypeName: DoublyLinkedListScript, Assembly-CSharp
+        m_MethodName: DeleteLast
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7855,7 +7855,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1510080231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8048,7 +8048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100014, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_IsActive
@@ -8494,8 +8494,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SinglyLinkedListScript, Assembly-CSharp
+      - m_Target: {fileID: 1290089637}
+        m_TargetAssemblyTypeName: DoublyLinkedListScript, Assembly-CSharp
         m_MethodName: CleanObjects
         m_Mode: 1
         m_Arguments:
@@ -8627,8 +8627,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SinglyLinkedListScript, Assembly-CSharp
+      - m_Target: {fileID: 1290089637}
+        m_TargetAssemblyTypeName: DoublyLinkedListScript, Assembly-CSharp
         m_MethodName: DeleteFirst
         m_Mode: 1
         m_Arguments:
@@ -8848,7 +8848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1732808951507650, guid: a9d2de84afb308a4796cc671d3432b4d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4802744215004400, guid: a9d2de84afb308a4796cc671d3432b4d, type: 3}
       propertyPath: m_LocalScale.x
@@ -9026,7 +9026,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1740406522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9143,7 +9143,7 @@ RectTransform:
   m_Children:
   - {fileID: 1226198172}
   m_Father: {fileID: 733769136}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9418,8 +9418,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SinglyLinkedListScript, Assembly-CSharp
+      - m_Target: {fileID: 1290089637}
+        m_TargetAssemblyTypeName: DoublyLinkedListScript, Assembly-CSharp
         m_MethodName: Append
         m_Mode: 1
         m_Arguments:
@@ -10244,9 +10244,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1290089636}
         m_TargetAssemblyTypeName: SinglyLinkedListScript, Assembly-CSharp
-        m_MethodName: DeleteValue
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10975,7 +10975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2099205939
 RectTransform:
   m_ObjectHideFlags: 0
