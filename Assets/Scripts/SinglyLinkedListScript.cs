@@ -36,7 +36,7 @@ public class SinglyLinkedListScript : MonoBehaviour
     {
         InitializeRandom();
         // Implicit Boxing avoid if possible
-        // NumberInputField.text = 990.ToString(); // Some C# Magic
+        // NumberInputField.text = 990.ToString(); // Some C# Magicr
     }
 
     public void InitializeRandom()
@@ -224,7 +224,8 @@ public class SinglyLinkedListScript : MonoBehaviour
 
     public void Append()
     {
-        int number = int.Parse(NumberInputField.text);
+        // int number = int.Parse(NumberInputField.text);
+        int number = 4;
         StartCoroutine(AppendUtil(number));
     }
 
