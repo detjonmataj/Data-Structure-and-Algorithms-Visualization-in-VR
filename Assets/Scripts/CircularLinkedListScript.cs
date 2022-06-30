@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CircularLinkedListScript : MonoBehaviour
 {
-    private readonly int maxLength = 10;
+    // private readonly int maxLength = 10;
     private readonly int maxNumber = 999;
     private readonly int minNumber = -999;
 
@@ -49,7 +49,7 @@ public class CircularLinkedListScript : MonoBehaviour
     private GameObject TailLink;
     //private GameObject HeadLabel;
     private GameObject TailLabel;
-    private GameObject NullText;
+    private readonly GameObject NullText;
 
     //used to store the nubmer of nodes in the Linked List
     private int length = 0;
@@ -338,7 +338,7 @@ public class CircularLinkedListScript : MonoBehaviour
         }
         else
         {
-            GameObject tempNull;
+            // GameObject tempNull;
             GameObject CurrentLabel;
             GameObject CurrentLink;
 
