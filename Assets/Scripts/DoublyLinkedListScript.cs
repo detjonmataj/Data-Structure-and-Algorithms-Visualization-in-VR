@@ -40,6 +40,8 @@ public class DoublyLinkedListScript : MonoBehaviour
     void Start()
     {
         InitializeRandom();
+        // Append();
+        // Prepend();
         // Search();
     }
 
@@ -110,7 +112,7 @@ public class DoublyLinkedListScript : MonoBehaviour
                 LastNextLink.transform.SetParent(this.transform);
                 LastNextLink.transform.localPosition = new Vector3((i * 1.2f) + 1.2f, 1.0f, 0);
 
-                /* TailText = GameObject.Instantiate(Tail, new Vector3((i * 1.2f), 2f, 0), Quaternion.identity);
+                TailText = GameObject.Instantiate(Tail, new Vector3((i * 1.2f), 2f, 0), Quaternion.identity);
                 TailText.transform.localScale = new Vector3(1.2f, 1.2f, 0.001f);
                 TailText.transform.SetParent(this.transform);
                 TailText.transform.localPosition = new Vector3((i * 1.2f) + 0.6f, 2f, 0);
@@ -119,7 +121,7 @@ public class DoublyLinkedListScript : MonoBehaviour
                 TailLink.transform.localScale = new Vector3(0.2f, 0.2f, 0.001f);
                 TailLink.transform.SetParent(this.transform);
                 TailLink.transform.localPosition = new Vector3((i * 1.2f) + 0.6f, 1.6f, 0);
-                TailLink.transform.Rotate(0.0f, 0.0f, -90.0f); */
+                TailLink.transform.Rotate(0.0f, 0.0f, -90.0f); 
             }
             else
             {
@@ -704,7 +706,7 @@ public class DoublyLinkedListScript : MonoBehaviour
     public void Search()
     {
         int number = int.Parse(NumberInputField.text);
-        // int number = 5;
+        // int number = 1;
         StartCoroutine(SearchUtil(number));
     }
 
