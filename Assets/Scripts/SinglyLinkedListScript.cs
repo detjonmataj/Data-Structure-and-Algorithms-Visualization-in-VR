@@ -238,6 +238,7 @@ public class SinglyLinkedListScript : MonoBehaviour
     {
         if (length == 0)
         {
+	    hasObject = true;
             nodes = new GameObject[100];
             links = new GameObject[100];
             length = 1;
