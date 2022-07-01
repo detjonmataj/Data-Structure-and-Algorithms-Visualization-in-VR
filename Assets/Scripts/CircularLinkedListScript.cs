@@ -64,7 +64,7 @@ public class CircularLinkedListScript : MonoBehaviour
         //Done
         //Prepend();
         //Append();
-        //Rotate();
+        // Rotate();
         //DeleteValue();
         //DeleteAtPosition();
         //InsertAtPosition();
@@ -73,18 +73,18 @@ public class CircularLinkedListScript : MonoBehaviour
 
     }
 
-    public void final()
-    {
-        StartCoroutine( tessss());
-    }
-    public IEnumerator tessss()
-    {
-        //yield return StartCoroutine(AppendUtil(12));
-        yield return StartCoroutine(AppendUtil(12));
-        //yield return StartCoroutine(DeleteLastUtil());
-        //yield return StartCoroutine(DeleteValueUtil(12));
-        yield return StartCoroutine(DeleteAtPositionUtil(length-1));
-    }
+    // public void final()
+    // {
+    //     StartCoroutine( tessss());
+    // }
+    // public IEnumerator tessss()
+    // {
+    //     //yield return StartCoroutine(AppendUtil(12));
+    //     yield return StartCoroutine(AppendUtil(12));
+    //     //yield return StartCoroutine(DeleteLastUtil());
+    //     //yield return StartCoroutine(DeleteValueUtil(12));
+    //     yield return StartCoroutine(DeleteAtPositionUtil(length-1));
+    // }
 
 
 
@@ -209,12 +209,12 @@ public class CircularLinkedListScript : MonoBehaviour
 
            
         }
-        initializing_the_returing_arrow(this.transform.localPosition.x + length * 0.6f - 0.6f, this.transform.localPosition.y, this.transform.position.z);
 
         transform.position = new Vector3(-length / 2, 5 / 2f, 0);
+        initializing_the_returing_arrow(this.transform.localPosition.x + length * 0.6f - 0.6f, this.transform.localPosition.y, this.transform.position.z);
     }
 
-    
+
 
     public void Rotate()
     {
