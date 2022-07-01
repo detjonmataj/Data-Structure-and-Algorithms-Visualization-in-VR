@@ -60,7 +60,6 @@ public class CircularLinkedListScript : MonoBehaviour
     void Start()
     {
         InitializeRandom();
-
         //Done
         //Prepend();
         //Append();
@@ -694,16 +693,10 @@ public class CircularLinkedListScript : MonoBehaviour
             //Destroy(HeadLabel);
             TailLabel.transform.parent = null;
             Destroy(TailLabel);
-            NullText.transform.parent = null;
-            Destroy(NullText);
+            // NullText.transform.parent = null;
+            // Destroy(NullText);
 
-            straightline.transform.parent = null;
-            straightlinebegining.transform.SetParent(null);
-            straightlineend.transform.SetParent(null);
-
-            Destroy(straightline);
-            Destroy(straightlinebegining);
-            Destroy(straightlineend);
+            
 
             while (this.transform.childCount > 0)
             {
