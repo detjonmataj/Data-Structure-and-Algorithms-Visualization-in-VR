@@ -49,7 +49,7 @@ public class CircularLinkedListScript : MonoBehaviour
     private GameObject TailLink;
     //private GameObject HeadLabel;
     private GameObject TailLabel;
-    private readonly GameObject NullText;
+    // private readonly GameObject NullText;
 
     //used to store the nubmer of nodes in the Linked List
     private int length = 0;
@@ -60,15 +60,16 @@ public class CircularLinkedListScript : MonoBehaviour
     void Start()
     {
         InitializeRandom();
-        //Done
-        //Prepend();
-        //Append();
+        // CleanObjects();
+        // Done
+        // Prepend();
+        // Append();
         // Rotate();
-        //DeleteValue();
-        //DeleteAtPosition();
-        //InsertAtPosition();
-        //Search();
-        //final()
+        // DeleteValue();
+        // DeleteAtPosition();
+        // InsertAtPosition();
+        // Search();
+        // final()
 
     }
 
@@ -87,7 +88,7 @@ public class CircularLinkedListScript : MonoBehaviour
 
 
 
-    public void initializing_the_returing_arrow(float x, float y,float z)
+    public void Initializing_the_returing_arrow(float x, float y,float z)
     {
         Debug.Log("we are intializing the array here again with " +length / 2f + " because the length is::: "+ length);
         head_pointer2 = Instantiate(straightline, new Vector3(x, y, z),Quaternion.identity);
@@ -210,7 +211,7 @@ public class CircularLinkedListScript : MonoBehaviour
         }
 
         transform.position = new Vector3(-length / 2, 5 / 2f, 0);
-        initializing_the_returing_arrow(this.transform.localPosition.x + length * 0.6f - 0.6f, this.transform.localPosition.y, this.transform.position.z);
+        Initializing_the_returing_arrow(this.transform.localPosition.x + length * 0.6f - 0.6f, this.transform.localPosition.y, this.transform.position.z);
     }
 
 
@@ -290,7 +291,7 @@ public class CircularLinkedListScript : MonoBehaviour
         }
         else
         {
-            int tt = length - 1;
+            // int tt = length - 1;
             //LeanTween.moveLocalX(HeadLabel, nodes[1].transform.localPosition.x, 1.5f);
             //LeanTween.moveLocalX(HeadLink, nodes[1].transform.localPosition.x, 1.5f);
             //yield return new WaitForSeconds(1f);
@@ -307,9 +308,9 @@ public class CircularLinkedListScript : MonoBehaviour
             //we are adjasting the returning array here
             //the base
             LeanTween.moveLocalX(head_pointer2, head_pointer2.transform.localPosition.x + 0.6f, 1.5f);
-            LeanTween.scaleX(head_pointer2, (tt / 2.0f) - 0.5f, 1.5f);
+            LeanTween.scaleX(head_pointer2, (length - 2) * 0.353f, 1.5f);
             //the poll
-            LeanTween.moveLocalX(straightlinebegining, straightline.transform.localPosition.x + 1.2f, 1.5f);
+            LeanTween.moveLocalX(straightlinebegining, straightlinebegining.transform.localPosition.x + 1.2f, 1.5f);
 
             for (int i = 1; i < length; i++)
             {
