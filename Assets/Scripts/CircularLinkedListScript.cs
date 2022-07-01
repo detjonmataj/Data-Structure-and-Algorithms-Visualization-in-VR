@@ -60,7 +60,6 @@ public class CircularLinkedListScript : MonoBehaviour
     void Start()
     {
         InitializeRandom();
-        initializing_the_returing_arrow(this.transform.localPosition.x + length * 0.6f-0.6f, this.transform.localPosition.y,this.transform.position.z);
 
         //Done
         //Prepend();
@@ -210,6 +209,7 @@ public class CircularLinkedListScript : MonoBehaviour
 
            
         }
+        initializing_the_returing_arrow(this.transform.localPosition.x + length * 0.6f - 0.6f, this.transform.localPosition.y, this.transform.position.z);
 
         transform.position = new Vector3(-length / 2, 5 / 2f, 0);
     }
